@@ -16,7 +16,7 @@ import dmacc.controller.BeanConfiguration;
 import dmacc.repository.StudentRepository;
 
 @SpringBootApplication
-public class SchoolProject implements CommandLineRunner {
+public class SchoolProject {
 	public static void main(String[] args) {
 		SpringApplication.run(SchoolProject.class, args);
 	}
@@ -24,29 +24,29 @@ public class SchoolProject implements CommandLineRunner {
 	@Autowired
 	StudentRepository repo;
 
-	@Override
-	public void run(String... args) throws Exception {
-// TODO Auto-generated method stub
-		ApplicationContext appContext = new AnnotationConfigApplicationContext(BeanConfiguration.class);
-//Using an existing bean
-		
-		Student c = appContext.getBean("student", Student.class);
-		repo.save(c);
-		
-//Creating a bean to use – not managed by Spring
-		Student s = new Student();
-		s.setGrade(11);
-		s.setName("FakeName");
-		s.setId(0);
-		School sc = new School("FakeSchool", "Des Moines", "IA");
-		s.setSchool(sc);
-		repo.save(s);
-
-		List<Student> allMyStudents = repo.findAll();
-		for (Student student : allMyStudents) {
-			System.out.println(student.toString());
-		}
-
-		((AbstractApplicationContext) appContext).close();
-	}
+//	@Override
+//	public void run(String... args) throws Exception {
+//// TODO Auto-generated method stub
+//		ApplicationContext appContext = new AnnotationConfigApplicationContext(BeanConfiguration.class);
+////Using an existing bean
+//		
+//		Student c = appContext.getBean("student", Student.class);
+//		repo.save(c);
+//		
+////Creating a bean to use – not managed by Spring
+//		Student s = new Student();
+//		s.setGrade(11);
+//		s.setName("FakeName");
+//		s.setId(0);
+//		School sc = new School("FakeSchool", "Des Moines", "IA");
+//		s.setSchool(sc);
+//		repo.save(s);
+//
+//		List<Student> allMyStudents = repo.findAll();
+//		for (Student student : allMyStudents) {
+//			System.out.println(student.toString());
+//		}
+//
+//		((AbstractApplicationContext) appContext).close();
+//	}
 }

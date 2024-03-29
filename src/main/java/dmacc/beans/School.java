@@ -31,6 +31,12 @@ public class School {
 	public String getState() {
 		return state;
 	}
+	public String getSchoolName() {
+		return schoolName;
+	}
+	public void setSchoolName(String schoolName) {
+		this.schoolName = schoolName;
+	}
 	public void setState(String state) {
 		this.state = state;
 	}
