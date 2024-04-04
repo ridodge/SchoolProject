@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<title>Insert New Contact</title>
+</head>
+<body>
+	<form th:object="${newStudent}"
+		th:action="@{/update/{id}(id=${newStudent.id})}" method=POST
+		onsubmit="return validateGradeInput()">
+		Name: <input name="name" size="20" th:field="*{name}"> <br />
+		Grade: <input name="grade" size="10" th:field="*{grade}"
+			id="gradeInput"><br /> School Name: <input
+			name="school.schoolName" size="20" th:field="*{school.schoolName}"><br />
+		City: <input name="school.city" size="20" th:field="*{school.city}"><br />
+		State: <input name="school.state" size="20" th:field="*{school.state}"><br />
+		<input name="submit" type="submit" value="submit" />
+	</form>
+	<a href="viewAll">View all Student</a>
+	<script>
+	function validateGradeInput(){
+	let gradeInput = document.getElementById('gradeInput').value;
+	
+	if (gradeInput < 1 || gradeInput > 12){
+		document.getElementById("gradeInput").style.color = "#ff0000";
+		window.alert('Grade much be between 1-12');
+		return false;
+}
+	}
+	</script>
+</body>
+</html>
+
